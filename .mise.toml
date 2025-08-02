@@ -3,3 +3,7 @@ pre-commit = "4.2.0"
 python = "3.13"
 terraform = "1.12.2"
 terraform-docs = "0.20.0"
+
+[tasks.terraform-docs]
+run = "terraform-docs markdown table --output-file README.md ."
+dir = "{{cwd}}"
