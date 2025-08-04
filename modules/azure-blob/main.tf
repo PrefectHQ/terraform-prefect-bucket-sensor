@@ -80,6 +80,6 @@ resource "prefect_webhook" "this" {
     data = "{{ body|from_cloud_event(headers) }}"
   })
 
-  service_account_id = coalesce(var.service_account_id, prefect_service_account.this[0].id)
+  service_account_id = try(var.service_account_id, prefect_service_account.this[0].id, null)
   workspace_id       = data.prefect_workspace.this.id
 }
