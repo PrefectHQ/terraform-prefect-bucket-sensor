@@ -1,5 +1,5 @@
 output "eventgrid_system_topic_id" {
-  value = one(azurerm_eventgrid_system_topic.this[0].id)
+  value = try(azurerm_eventgrid_system_topic.this[0].id, null)
 }
 
 output "eventgrid_subscription_id" {
@@ -7,7 +7,7 @@ output "eventgrid_subscription_id" {
 }
 
 output "prefect_service_account_id" {
-  value = one(prefect_service_account.this[0].id)
+  value = try(prefect_service_account.this[0].id, null)
 }
 
 output "prefect_webhook_id" {
