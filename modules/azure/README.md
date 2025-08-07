@@ -3,14 +3,14 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_azure"></a> [azure](#requirement\_azure) | >= 4 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 4 |
 | <a name="requirement_prefect"></a> [prefect](#requirement\_prefect) | >= 2.13.5, < 3 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | n/a |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 4 |
 | <a name="provider_prefect"></a> [prefect](#provider\_prefect) | >= 2.13.5, < 3 |
 
 ## Modules
