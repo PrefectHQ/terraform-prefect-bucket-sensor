@@ -13,3 +13,7 @@ output "prefect_service_account_id" {
 output "prefect_webhook_id" {
   value = prefect_webhook.this.id
 }
+
+output "prefect_webhook_url" {
+  value = prefect_webhook.this.endpoint
+}
