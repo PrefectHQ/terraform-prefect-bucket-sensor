@@ -45,7 +45,7 @@ resource "azurerm_eventgrid_event_subscription" "this" {
 
   lifecycle {
     precondition {
-      condition = var.create_eventgrid_system_topic == true || (var.create_eventgrid_system_topic == false && var.eventgrid_system_topic_id != null)
+      condition     = var.create_eventgrid_system_topic == true || (var.create_eventgrid_system_topic == false && var.eventgrid_system_topic_id != null)
       error_message = "eventgrid_system_topic_id must be defined when create_eventgrid_system_topic = false"
     }
   }
@@ -60,8 +60,8 @@ data "prefect_workspace_role" "this" {
 
 # Optional service account
 resource "prefect_service_account" "this" {
-  count = var.create_service_account == true ? 1 : 0
-  name = coalesce(var.prefect_service_account_name_override, "azure-${var.storage_account_name}-webhook")
+  count             = var.create_service_account == true ? 1 : 0
+  name              = coalesce(var.prefect_service_account_name_override, "azure-${var.storage_account_name}-webhook")
   account_role_name = var.prefect_service_account_role_name
 
   lifecycle {
@@ -73,10 +73,10 @@ resource "prefect_service_account" "this" {
 }
 
 resource "prefect_workspace_access" "this" {
-  count = var.create_service_account == true ? 1 : 0
-  accessor_type = "SERVICE_ACCOUNT"
-  accessor_id = prefect_service_account.this[0].id
-  workspace_id = data.prefect_workspace.this.id
+  count             = var.create_service_account == true ? 1 : 0
+  accessor_type     = "SERVICE_ACCOUNT"
+  accessor_id       = prefect_service_account.this[0].id
+  workspace_id      = data.prefect_workspace.this.id
   workspace_role_id = data.prefect_workspace_role.this.id
 }
 
@@ -84,14 +84,14 @@ resource "prefect_webhook" "this" {
   name        = coalesce(var.prefect_webhook_name_override, "azure-${var.storage_account_name}-bucket-sensor")
   description = coalesce(var.prefect_webhook_description_override, "Receives events from Azure Storage Blob for ${var.storage_account_name} in ${var.resource_group_name}")
   enabled     = var.prefect_webhook_enabled
-  template    = var.prefect_webhook_template_override != null ? jsonencode(var.prefect_webhook_template_override) : jsonencode({
-      event = "azure.storage.blob.created"
-      resource = {
-        "prefect.resource.id"   = "azure.storage.${var.storage_account_name}"
-        "prefect.resource.name" = "Azure Storage Blob"
-      }
-      data = var.prefect_webhook_template_data
-    })
+  template = var.prefect_webhook_template_override != null ? jsonencode(var.prefect_webhook_template_override) : jsonencode({
+    event = "azure.storage.blob.created"
+    resource = {
+      "prefect.resource.id"   = "azure.storage.${var.storage_account_name}"
+      "prefect.resource.name" = "Azure Storage Blob"
+    }
+    data = var.prefect_webhook_template_data
+  })
 
   service_account_id = try(prefect_service_account.this[0].id, var.prefect_service_account_id, null)
 }
