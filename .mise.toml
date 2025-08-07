@@ -6,4 +6,3 @@ terraform-docs = "0.20.0"
 
 [tasks.terraform-docs]
 run = "terraform-docs markdown table --output-file README.md ."
-dir = "{{cwd}}"
