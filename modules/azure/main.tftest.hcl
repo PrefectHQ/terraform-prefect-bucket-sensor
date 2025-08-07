@@ -201,3 +201,14 @@ run "ensure_overrides" {
     error_message = "The prefect_webhook resource did not have its template property correctly overridden."
   }
 }
+
+run "ensure_failure" {
+  variables {
+    create_service_account = true
+    prefect_service_account_id = "overridden"
+  }
+  
+  command = plan
+  
+  expect_failures = [prefect_service_account.this[0]]
+}
