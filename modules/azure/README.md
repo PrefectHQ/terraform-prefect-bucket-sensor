@@ -35,6 +35,9 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_location"></a> [location](#input\_location) | The Azure Region where the Event Grid System Topic should exist. | `string` | n/a | yes |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The Azure Resource Group Name | `string` | n/a | yes |
+| <a name="input_storage_account_name"></a> [storage\_account\_name](#input\_storage\_account\_name) | The Storage Account Name to monitor | `string` | n/a | yes |
 | <a name="input_create_eventgrid_system_topic"></a> [create\_eventgrid\_system\_topic](#input\_create\_eventgrid\_system\_topic) | Should a new Event Grid System Topic be created for this Storage Account? | `bool` | `true` | no |
 | <a name="input_create_service_account"></a> [create\_service\_account](#input\_create\_service\_account) | Creates a new developer role service account in the workspace for webhook authentication. | `bool` | `false` | no |
 | <a name="input_event_time_to_live"></a> [event\_time\_to\_live](#input\_event\_time\_to\_live) | The maximum Event Grid webhook time to live | `number` | `1440` | no |
@@ -42,7 +45,6 @@ No modules.
 | <a name="input_eventgrid_subscription_event_type"></a> [eventgrid\_subscription\_event\_type](#input\_eventgrid\_subscription\_event\_type) | The Event Grid subscription type. | `list(string)` | <pre>[<br/>  "Microsoft.Storage.BlobCreated"<br/>]</pre> | no |
 | <a name="input_eventgrid_system_topic_id"></a> [eventgrid\_system\_topic\_id](#input\_eventgrid\_system\_topic\_id) | The ID of an existing Event Grid System Topic for a Storage Account. | `string` | `null` | no |
 | <a name="input_eventgrid_system_topic_name_override"></a> [eventgrid\_system\_topic\_name\_override](#input\_eventgrid\_system\_topic\_name\_override) | Overrides the generated name of the Azure System Topic resource. | `string` | `null` | no |
-| <a name="input_location"></a> [location](#input\_location) | The Azure Region where the Event Grid System Topic should exist. | `string` | n/a | yes |
 | <a name="input_max_delivery_attempts"></a> [max\_delivery\_attempts](#input\_max\_delivery\_attempts) | The maximum number of times the Event Grid webhook will attempt to deliver the event. | `number` | `5` | no |
 | <a name="input_prefect_service_account_id"></a> [prefect\_service\_account\_id](#input\_prefect\_service\_account\_id) | Provide the ID of an existing service account in the workspace for webhook authentication. | `string` | `null` | no |
 | <a name="input_prefect_service_account_name_override"></a> [prefect\_service\_account\_name\_override](#input\_prefect\_service\_account\_name\_override) | Overrides the generated name of the Prefect Service Account resource. | `string` | `null` | no |
@@ -53,8 +55,6 @@ No modules.
 | <a name="input_prefect_webhook_name_override"></a> [prefect\_webhook\_name\_override](#input\_prefect\_webhook\_name\_override) | Overrides the generated name of the Prefect Webhook resource. | `string` | `null` | no |
 | <a name="input_prefect_webhook_template_data"></a> [prefect\_webhook\_template\_data](#input\_prefect\_webhook\_template\_data) | The template to parse the webhook payload. (see https://docs.prefect.io/v3/automate/events/webhook-triggers#accepting-cloudevents for more details) | `string` | `"{{ body|from_cloud_event(headers) }}"` | no |
 | <a name="input_prefect_webhook_template_override"></a> [prefect\_webhook\_template\_override](#input\_prefect\_webhook\_template\_override) | Overrides the default template of the Prefect Webhook resource. | `map(any)` | `null` | no |
-| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The Azure Resource Group Name | `string` | n/a | yes |
-| <a name="input_storage_account_name"></a> [storage\_account\_name](#input\_storage\_account\_name) | The Storage Account Name to monitor | `string` | n/a | yes |
 
 ## Outputs
 
