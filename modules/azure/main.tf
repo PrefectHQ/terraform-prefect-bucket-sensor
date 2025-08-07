@@ -63,6 +63,13 @@ resource "prefect_service_account" "this" {
   count = var.create_service_account == true ? 1 : 0
   name = coalesce(var.prefect_service_account_name_override, "azure-${var.storage_account_name}-webhook")
   account_role_name = var.prefect_service_account_role_name
+
+  lifecycle {
+    precondition {
+      condition     = var.create_service_account == true && var.prefect_service_account_id == null
+      error_message = "You must not set prefect_service_account_id when create_service_account = true"
+    }
+  }
 }
 
 resource "prefect_workspace_access" "this" {
