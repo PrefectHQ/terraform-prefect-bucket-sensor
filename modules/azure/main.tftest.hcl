@@ -73,6 +73,18 @@ run "ensure_defaults" {
     condition = prefect_webhook.this.service_account_id == null
     error_message = "The service_account_id for the prefect_webhook resource should be null."
   }
+
+  assert {
+    condition = prefect_webhook.this.template == jsonencode({
+      event = "azure.storage.blob.created"
+      resource = {
+        "prefect.resource.id"   = "azure.storage.${var.storage_account_name}"
+        "prefect.resource.name" = "Azure Storage Blob"
+      }
+      data = var.prefect_webhook_template_data
+    })
+    error_message = "The webhook template must use the correct default"
+  }
 }
 
 run "ensure_creates_service_account" {
