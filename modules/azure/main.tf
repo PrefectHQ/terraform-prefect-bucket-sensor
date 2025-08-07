@@ -77,14 +77,14 @@ resource "prefect_webhook" "this" {
   name        = coalesce(var.prefect_webhook_name_override, "azure-${var.storage_account_name}-bucket-sensor")
   description = coalesce(var.prefect_webhook_description_override, "Receives events from Azure Storage Blob for ${var.storage_account_name} in ${var.resource_group_name}")
   enabled     = var.prefect_webhook_enabled
-  template = coalesce(jsonencode(var.prefect_webhook_template_override), jsonencode({
-    event = "azure.storage.blob.created"
-    resource = {
-      "prefect.resource.id"   = "azure.storage.${var.storage_account_name}"
-      "prefect.resource.name" = "Azure Storage Blob"
-    }
-    data = var.prefect_webhook_template_data
-  }))
+  template    = var.prefect_webhook_template_override != null ? jsonencode(var.prefect_webhook_template_override) : jsonencode({
+      event = "azure.storage.blob.created"
+      resource = {
+        "prefect.resource.id"   = "azure.storage.${var.storage_account_name}"
+        "prefect.resource.name" = "Azure Storage Blob"
+      }
+      data = var.prefect_webhook_template_data
+    })
 
   service_account_id = try(prefect_service_account.this[0].id, var.prefect_service_account_id, null)
 }
