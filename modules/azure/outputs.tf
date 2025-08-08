@@ -10,6 +10,10 @@ output "prefect_service_account_id" {
   value = try(prefect_service_account.this[0].id, null)
 }
 
+output "prefect_webhook" {
+  value = prefect_webhook.this
+}
+
 output "prefect_webhook_id" {
   value = prefect_webhook.this.id
 }
