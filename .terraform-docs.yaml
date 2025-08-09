@@ -10,6 +10,10 @@ settings:
   required: true
   sensitive: true
   type: true
+  
+recursive:
+  enabled: true
+  include-main: false
 
 sort:
   enabled: true

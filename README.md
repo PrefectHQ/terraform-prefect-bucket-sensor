@@ -4,6 +4,7 @@ Terraform module which creates an object storage bucket, event notifications, pu
 Currently supported:
 
 - AWS (S3 + EventBridge)
+- Azure (Blob Storage + Event Grid)
 - GCP (Google Cloud Storage + PubSub)
 
 Use this module to provision an off-the-shelf bucket sensor integration to trigger Prefect automations and flows whenever bucket lifecycle events occur.
@@ -53,6 +54,30 @@ module "s3_to_prefect" {
       "object-key"          = "{{ body.detail.object.key }}",
     }
   }
+}
+```
+
+### Azure / Blob Storage + Event Grid
+
+```hcl
+provider "prefect" {
+  # insert your Prefect API key here
+}
+
+provider "azurerm" {
+  # insert your Azure credentials here
+  features {}
+}
+
+module "azure_blob_to_prefect" {
+  source = "prefecthq/bucket-sensor/prefect//modules/azure"
+
+  resource_group_name = "example"
+  storage_account_name = "example"
+  location = "us-east1"
+
+  # can enable if pro or enterprise, adds auth to webhook endpoint
+  create_service_account = True
 }
 ```
 
