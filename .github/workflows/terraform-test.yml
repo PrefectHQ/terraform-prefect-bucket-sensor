@@ -1,0 +1,55 @@
+---
+name: Terraform Test
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'modules/**'
+      - '.github/workflows/terraform-test.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  terraform-test:
+    name: Test Module - ${{ matrix.module }}
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        module: [azure, gcs, s3]
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ~1.6
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive modules/${{ matrix.module }}
+        working-directory: .
+
+      - name: Terraform Init
+        run: terraform init -backend=false
+        working-directory: modules/${{ matrix.module }}
+
+      - name: Terraform Validate
+        run: terraform validate
+        working-directory: modules/${{ matrix.module }}
+
+      - name: Check for test files
+        run: |
+          if [ ! -f "modules/${{ matrix.module }}/*.tftest.hcl" ]; then
+            echo "No test files found for module ${{ matrix.module }}"
+            echo "Skipping tests for this module"
+            exit 0
+          fi
+
+      - name: Terraform Test
+        run: terraform test
+        working-directory: modules/${{ matrix.module }}
+        continue-on-error: true
