@@ -41,14 +41,6 @@ jobs:
         run: terraform validate
         working-directory: modules/${{ matrix.module }}
 
-      - name: Check for test files
-        run: |
-          if [ ! -f "modules/${{ matrix.module }}/*.tftest.hcl" ]; then
-            echo "No test files found for module ${{ matrix.module }}"
-            echo "Skipping tests for this module"
-            exit 0
-          fi
-
       - name: Terraform Test
         run: terraform test
         working-directory: modules/${{ matrix.module }}
