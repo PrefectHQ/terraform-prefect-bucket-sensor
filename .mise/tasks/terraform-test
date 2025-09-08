@@ -1,0 +1,33 @@
+#!/bin/bash
+#MISE description="Run terraform test across all modules"
+
+# Terraform Test Script
+# Dynamically discovers and tests all modules in the modules/ directory
+
+set -e  # Exit on any error
+
+echo "Discovering and testing all modules..."
+
+# Loop through all directories in modules/
+for module in modules/*/; do
+  if [ -d "$module" ]; then
+    module_name=$(basename "$module")
+    echo "Initializing and running terraform test for $module_name module..."
+    
+    # Change to module directory
+    cd "$module"
+    
+    # Initialize terraform
+    terraform init
+    
+    # Run tests (or show message if no tests found)
+    if ! terraform test; then
+      echo "No test files found in $module_name module"
+    fi
+    
+    # Return to original directory
+    cd - > /dev/null
+  fi
+done
+
+echo "All terraform tests completed!"
