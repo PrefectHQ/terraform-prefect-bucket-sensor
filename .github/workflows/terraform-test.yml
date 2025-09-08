@@ -44,4 +44,3 @@ jobs:
       - name: Terraform Test
         run: terraform test
         working-directory: modules/${{ matrix.module }}
-        continue-on-error: true
