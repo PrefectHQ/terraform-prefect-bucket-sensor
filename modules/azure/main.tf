@@ -45,7 +45,7 @@ resource "azurerm_eventgrid_event_subscription" "this" {
 
   lifecycle {
     precondition {
-      condition = var.create_eventgrid_system_topic == true || (var.create_eventgrid_system_topic == false && var.eventgrid_system_topic_id != null)
+      condition     = var.create_eventgrid_system_topic == true || (var.create_eventgrid_system_topic == false && var.eventgrid_system_topic_id != null)
       error_message = "eventgrid_system_topic_id must be defined when create_eventgrid_system_topic = false"
     }
   }
@@ -60,8 +60,8 @@ data "prefect_workspace_role" "this" {
 
 # Optional service account
 resource "prefect_service_account" "this" {
-  count = var.create_service_account == true ? 1 : 0
-  name = coalesce(var.prefect_service_account_name_override, "azure-${var.storage_account_name}-webhook")
+  count             = var.create_service_account == true ? 1 : 0
+  name              = coalesce(var.prefect_service_account_name_override, "azure-${var.storage_account_name}-webhook")
   account_role_name = var.prefect_service_account_role_name
 
   lifecycle {
@@ -73,10 +73,10 @@ resource "prefect_service_account" "this" {
 }
 
 resource "prefect_workspace_access" "this" {
-  count = var.create_service_account == true ? 1 : 0
-  accessor_type = "SERVICE_ACCOUNT"
-  accessor_id = prefect_service_account.this[0].id
-  workspace_id = data.prefect_workspace.this.id
+  count             = var.create_service_account == true ? 1 : 0
+  accessor_type     = "SERVICE_ACCOUNT"
+  accessor_id       = prefect_service_account.this[0].id
+  workspace_id      = data.prefect_workspace.this.id
   workspace_role_id = data.prefect_workspace_role.this.id
 }
 
