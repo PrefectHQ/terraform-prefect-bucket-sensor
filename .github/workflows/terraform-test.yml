@@ -27,7 +27,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: ~1.6
+          terraform_version: ~1.12
 
       - name: Terraform Format Check
         run: terraform fmt -check -recursive modules/${{ matrix.module }}
