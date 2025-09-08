@@ -63,6 +63,7 @@ No modules.
 | <a name="output_eventgrid_subscription_id"></a> [eventgrid\_subscription\_id](#output\_eventgrid\_subscription\_id) | n/a |
 | <a name="output_eventgrid_system_topic_id"></a> [eventgrid\_system\_topic\_id](#output\_eventgrid\_system\_topic\_id) | n/a |
 | <a name="output_prefect_service_account_id"></a> [prefect\_service\_account\_id](#output\_prefect\_service\_account\_id) | n/a |
+| <a name="output_prefect_webhook"></a> [prefect\_webhook](#output\_prefect\_webhook) | n/a |
 | <a name="output_prefect_webhook_id"></a> [prefect\_webhook\_id](#output\_prefect\_webhook\_id) | n/a |
 | <a name="output_prefect_webhook_url"></a> [prefect\_webhook\_url](#output\_prefect\_webhook\_url) | n/a |
 <!-- END_TF_DOCS -->
