@@ -24,10 +24,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+      - name: Install tool dependencies
+        uses: jdx/mise-action@v2
         with:
-          terraform_version: ~1.12
+          install_args: "terraform"
 
       - name: Terraform Format Check
         run: terraform fmt -check -recursive modules/${{ matrix.module }}
