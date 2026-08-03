@@ -1,7 +1,7 @@
 [tools]
-pre-commit = "4.6.0"
+pre-commit = "4.6.1"
 python = "3.14"
-terraform = "1.15.7"
+terraform = "1.15.8"
 terraform-docs = "0.24.0"
 
 [tasks.terraform-docs]
