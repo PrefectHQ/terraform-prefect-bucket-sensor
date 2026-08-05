@@ -3,15 +3,15 @@
 
 | Name | Version |
 | ---- | ------- |
-| <a name="requirement_google"></a> [google](#requirement\_google) | < 8 |
-| <a name="requirement_prefect"></a> [prefect](#requirement\_prefect) | >= 2.13.5, < 3 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | >= 6.1, < 8 |
+| <a name="requirement_prefect"></a> [prefect](#requirement\_prefect) | >= 2.13.5, < 4 |
 
 ## Providers
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_google"></a> [google](#provider\_google) | < 8 |
-| <a name="provider_prefect"></a> [prefect](#provider\_prefect) | >= 2.13.5, < 3 |
+| <a name="provider_google"></a> [google](#provider\_google) | >= 6.1, < 8 |
+| <a name="provider_prefect"></a> [prefect](#provider\_prefect) | >= 2.13.5, < 4 |
 
 ## Modules
 
