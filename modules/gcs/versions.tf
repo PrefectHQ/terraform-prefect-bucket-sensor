@@ -2,7 +2,7 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = ">= 6.1, < 7"
+      version = "< 8"
     }
     prefect = {
       source  = "prefecthq/prefect"
