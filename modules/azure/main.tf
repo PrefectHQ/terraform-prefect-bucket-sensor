@@ -6,11 +6,11 @@ data "azurerm_storage_account" "this" {
 resource "azurerm_eventgrid_system_topic" "this" {
   count = var.create_eventgrid_system_topic ? 1 : 0
 
-  name                   = coalesce(var.eventgrid_system_topic_name_override, "${var.storage_account_name}-storage-topic")
-  resource_group_name    = var.resource_group_name
-  location               = var.location
-  source_arm_resource_id = data.azurerm_storage_account.this.id
-  topic_type             = "Microsoft.Storage.StorageAccounts"
+  name                = coalesce(var.eventgrid_system_topic_name_override, "${var.storage_account_name}-storage-topic")
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  source_resource_id  = data.azurerm_storage_account.this.id
+  topic_type          = "Microsoft.Storage.StorageAccounts"
 }
 
 resource "azurerm_eventgrid_event_subscription" "this" {
