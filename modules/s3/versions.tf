@@ -6,7 +6,7 @@ terraform {
     }
     prefect = {
       source  = "prefecthq/prefect"
-      version = ">= 2.13.5, < 3"
+      version = "< 4"
     }
   }
 }
