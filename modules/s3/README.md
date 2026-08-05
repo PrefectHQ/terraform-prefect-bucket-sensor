@@ -3,14 +3,14 @@
 
 | Name | Version |
 | ---- | ------- |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5, < 6 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | < 7 |
 | <a name="requirement_prefect"></a> [prefect](#requirement\_prefect) | >= 2.13.5, < 3 |
 
 ## Providers
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5, < 6 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | < 7 |
 | <a name="provider_prefect"></a> [prefect](#provider\_prefect) | >= 2.13.5, < 3 |
 
 ## Modules
