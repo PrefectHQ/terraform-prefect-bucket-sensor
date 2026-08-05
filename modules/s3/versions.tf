@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "< 7"
+      version = ">= 5, < 7"
     }
     prefect = {
       source  = "prefecthq/prefect"
