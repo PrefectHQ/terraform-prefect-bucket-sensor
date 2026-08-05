@@ -2,14 +2,14 @@
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5, < 6 |
 | <a name="requirement_prefect"></a> [prefect](#requirement\_prefect) | >= 2.13.5, < 3 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5, < 6 |
 | <a name="provider_prefect"></a> [prefect](#provider\_prefect) | >= 2.13.5, < 3 |
 
@@ -20,7 +20,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_cloudwatch_event_api_destination.prefect](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_api_destination) | resource |
 | [aws_cloudwatch_event_connection.prefect](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_connection) | resource |
 | [aws_cloudwatch_event_rule.s3](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_rule) | resource |
@@ -34,7 +34,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_bucket_event_notification_types"></a> [bucket\_event\_notification\_types](#input\_bucket\_event\_notification\_types) | The types of S3 events to send notifications for. See [documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventBridge.html) for supported event types | `list(string)` | <pre>[<br/>  "Object Created",<br/>  "Object Deleted"<br/>]</pre> | no |
 | <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | The name of the S3 bucket to create | `string` | `"s3-event-notification-bucket"` | no |
 | <a name="input_topic_name"></a> [topic\_name](#input\_topic\_name) | The name of the SNS topic to create | `string` | `"s3-event-notification-topic"` | no |
@@ -44,6 +44,6 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_webhook"></a> [webhook](#output\_webhook) | The Prefect webhook resource. Use the metadata to get the endpoint or webhook ID for downstream Automations |
 <!-- END_TF_DOCS -->
