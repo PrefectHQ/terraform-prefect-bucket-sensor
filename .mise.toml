@@ -1,8 +1,8 @@
 [tools]
-pre-commit = "4.6.2"
-python = "3.14"
-terraform = "1.16.4"
-terraform-docs = "0.24.0"
+pre-commit = "4.7.0"
+python = "3.15.2"
+terraform = "1.17.2"
+terraform-docs = "0.25.1"
 
 [tasks.terraform-docs]
 description = "Generates terraform docs for all modules"
